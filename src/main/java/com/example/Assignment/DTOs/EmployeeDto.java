@@ -14,4 +14,6 @@ public class EmployeeDto {
 
     private int salary;
 
+    private int boosId;
+
 }

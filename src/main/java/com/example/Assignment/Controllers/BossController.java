@@ -44,8 +44,7 @@ public class BossController {
 }
 
 
-//Create a employee-boss management system where you can perform important CRUD operations
-// upon them.
+// Create a employee-boss management system where you can perform important CRUD operations upon them.
 // POST :ADD employee,addboss
 // Get employees who are under a given age and have rating greater than x.
 // PUT : update all the boss salary of the boses, by x whose rating is > y.

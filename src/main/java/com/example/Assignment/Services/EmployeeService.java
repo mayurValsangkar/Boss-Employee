@@ -2,7 +2,9 @@ package com.example.Assignment.Services;
 
 import com.example.Assignment.Convertors.EmployeeConvertor;
 import com.example.Assignment.DTOs.EmployeeDto;
+import com.example.Assignment.Models.Boss;
 import com.example.Assignment.Models.Employee;
+import com.example.Assignment.Repositories.BossRepository;
 import com.example.Assignment.Repositories.EmployeeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -16,12 +18,21 @@ public class EmployeeService {
     @Autowired
     EmployeeRepository employeeRepository;
 
+    @Autowired
+    BossRepository bossRepository;
+
     public void add(EmployeeDto employeeDto){
 
         // We have converted Dto to Entity
         Employee employee = EmployeeConvertor.convertDtoToEntity(employeeDto);
 
-        employeeRepository.save(employee);
+        int bossId = employeeDto.getBoosId();
+
+        Boss boss = bossRepository.findById(bossId).get();
+        employee.setBoss(boss);
+        //employeeRepository.save(employee);
+
+        bossRepository.save(boss);
     }
 
     // Get employees who are under a given age and have rating greater than x.
